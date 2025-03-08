@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "expiring-jwts"
+version = "0.1.0"
+description = ""
+authors = ["Nitish Patel <nitishp74@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.11"
+uvicorn = "^0.34.0"
+sqlalchemy = "^2.0.38"
+databases = "^0.9.0"
+psycopg = "^3.2.5"
+pyjwt = "^2.10.1"
+python-dotenv = "^1.0.1"
+redis = "^5.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+devrun = "expiring_jwts.main:runserver"
