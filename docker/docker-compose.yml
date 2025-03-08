@@ -5,11 +5,13 @@ services:
     build:
       context: ../  # Root of the project
       dockerfile: docker/backend/Dockerfile  # Path to Dockerfile
+    volumes:
+      - ../.:/app
     container_name: fastapi_app
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/postgres
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db/postgres
       - REDIS_URL=redis://redis:6379
     depends_on:
       - db

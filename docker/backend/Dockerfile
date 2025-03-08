@@ -10,17 +10,17 @@ RUN pip install poetry
 # Configure Poetry to install dependencies system-wide
 RUN poetry config virtualenvs.create false
 
-# Copy project files
-COPY pyproject.toml poetry.lock ./
+# Copy the entire application first
+COPY . .
+
+# Ensure the project directory contains pyproject.toml
+RUN ls -la /app
 
 # Install dependencies
 RUN poetry install --no-root
-
-# Copy the application files
-COPY . .
 
 # Expose FastAPI port
 EXPOSE 8000
 
 # Start FastAPI
-CMD ["poetry","run","devrun"]
+CMD ["poetry", "run", "devrun"]
